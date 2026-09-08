@@ -1,286 +1,302 @@
-<!DOCTYPE html>
-<html lang="es">
+<main class="form-container">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div>
+    <header class="form-header">
+      <h2>Registro de Usuario</h2>
+      <p>Por favor completa los siguientes datos obligatorios</p>
+    </header>
+  </div>
 
-    <title>Formulario</title>
+  <div>
 
-    <link rel="stylesheet" href="registro-usuario.component.css">
-</head>
+    <form id="FormularioRegistro" (ngSubmit)="guardarUsuario()">
 
-<body>
+      <div class="form-row">
 
-    <div id="contenedor-header">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
 
-        <header id="cabecera-principal">
-            <h1 id="titulo-principal">FORMULARIO</h1>
-        </header>
+          <input
+            type="text"
+            id="nombre"
+            [ngModel]="nombre()"
+            (ngModelChange)="nombre.set($event)"
+            name="nombre"
+            placeholder="Ej. Carlos"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+
+          <input
+            type="text"
+            id="apellido"
+            [ngModel]="apellido()"
+            (ngModelChange)="apellido.set($event)"
+            name="apellido"
+            placeholder="Ej. Pérez"
+            required
+          >
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="tipo_doc">Tipo de documento</label>
+
+          <select
+            id="tipo_doc"
+            [ngModel]="tipo()"
+            (ngModelChange)="tipo.set($event)"
+            name="tipo_doc"
+            required
+          >
+            <option value="" disabled>Seleccione...</option>
+            <option value="CC">Cédula de Ciudadanía</option>
+            <option value="CE">Cédula de Extranjería</option>
+            <option value="PAS">Pasaporte</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="numero_identificacion">Número de documento</label>
+
+          <input
+            type="text"
+            id="numero_identificacion"
+            [ngModel]="numero()"
+            (ngModelChange)="numero.set($event)"
+            name="numero_identificacion"
+            placeholder="12345678"
+            pattern="[0-9]{6,12}"
+            title="Ingrese solo números"
+            required
+          >
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="nacimiento">Fecha de nacimiento</label>
+
+        <input
+          type="date"
+          id="nacimiento"
+          [ngModel]="nacimiento()"
+          (ngModelChange)="nacimiento.set($event)"
+          name="nacimiento"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="celular">Número de celular</label>
+
+        <input
+          type="tel"
+          id="celular"
+          [ngModel]="celular()"
+          (ngModelChange)="celular.set($event)"
+          name="celular"
+          placeholder="3001234567"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+
+        <input
+          type="email"
+          id="correo"
+          [ngModel]="correo()"
+          (ngModelChange)="correo.set($event)"
+          name="correo"
+          placeholder="ejemplo@correo.com"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="pais">País de domicilio</label>
+
+        <select
+          id="pais"
+          [ngModel]="pais()"
+          (ngModelChange)="pais.set($event)"
+          name="pais"
+          required
+        >
+          <option value="" disabled>Seleccione...</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Estados Unidos">Estados Unidos</option>
+          <option value="Ecuador">Ecuador</option>
+          <option value="Venezuela">Venezuela</option>
+          <option value="México">México</option>
+          <option value="Brasil">Brasil</option>
+          <option value="España">España</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ciudad">Ciudad de domicilio</label>
+
+        <select
+          id="ciudad"
+          [ngModel]="ciudad()"
+          (ngModelChange)="ciudad.set($event)"
+          name="ciudad"
+          required
+        >
+          <option value="" disabled>Seleccione...</option>
+          <option value="Bogotá D.C.">Bogotá D.C.</option>
+          <option value="Medellín">Medellín</option>
+          <option value="Cali">Cali</option>
+          <option value="Barranquilla">Barranquilla</option>
+          <option value="Bucaramanga">Bucaramanga</option>
+          <option value="Cartagena">Cartagena</option>
+          <option value="Manizales">Manizales</option>
+          <option value="Pereira">Pereira</option>
+        </select>
+      </div>
+
+      <div class="checkbox-group">
+
+        <input
+          type="checkbox"
+          id="datos_personales"
+          [ngModel]="tratamientoDatos()"
+          (ngModelChange)="tratamientoDatos.set($event)"
+          name="datos_personales"
+          required
+        >
+
+        <label for="datos_personales">
+          Acepto el tratamiento de mis datos personales de acuerdo
+          con las
+          <a
+            href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            políticas de privacidad
+          </a>.
+        </label>
+
+      </div>
+
+      <button type="submit" class="btn-submit">
+        Enviar Registro
+      </button>
+
+    </form>
+
+  </div>
+
+  @if (ultimoUsuario(); as user) {
+
+    <div class="user-info">
+
+      <h3>Usuario Registrado</h3>
+
+      <p><strong>ID generado:</strong> {{ user.id }}</p>
+
+      <p><strong>Nombre Completo:</strong> {{ user.nombreCompleto }}</p>
+
+      <p>
+        <strong>Documento:</strong>
+        {{ user.documento.tipo }} - {{ user.documento.numero }}
+      </p>
+
+      <p><strong>Fecha de Nacimiento:</strong> {{ user.nacimiento }}</p>
+
+      <p><strong>Celular:</strong> {{ user.celular }}</p>
+
+      <p><strong>Correo:</strong> {{ user.correo }}</p>
+
+      <p><strong>País:</strong> {{ user.pais }}</p>
+
+      <p><strong>Ciudad:</strong> {{ user.ciudad }}</p>
+
+      <p>
+        <strong>Tratamiento de datos:</strong>
+
+        @if (user.tratamientoDatos) {
+          Aceptado
+        } @else {
+          No aceptado
+        }
+
+      </p>
 
     </div>
 
+  }
 
-    <main id="contenido-principal">
+  <div id="reto-javascript">
 
-        <!-- FORMULARIO -->
+    <h2 id="titulo-reto">
+      Retos JavaScript
+    </h2>
 
-        <div id="contenedor-formulario">
+    <div class="ejercicio">
 
-            <form id="formulario-registro">
+      <h3>numerosConWhile(n)</h3>
 
-                <div class="form-group">
+      <input
+        type="number"
+        id="numero1"
+        placeholder="Ingrese un valor"
+      >
 
-                    <label for="nombre">
-                        Nombre:
-                    </label>
+      <button type="button" id="resolver1">
+        Resolver
+      </button>
 
-                    <input type="text" id="nombre" [(ngModel)]="nombreCompleto" placeholder=" TU Nombre" required>
+      <p id="resultado1"></p>
 
-                </div>
+    </div>
 
+    <div class="ejercicio">
 
-                <div class="form-group">
+      <h3>contarHastaLimite(limite)</h3>
 
-                    <label for="apellido">
-                        Apellido:
-                    </label>
+      <input
+        type="number"
+        id="numero2"
+        placeholder="Ingrese un valor"
+      >
 
-                    <input type="text" id="apellido" [(ngModel)]="apellido" placeholder=" TU Apellidos" required>
+      <button type="button" id="resolver2">
+        Resolver
+      </button>
 
-                </div>
+      <p id="resultado2"></p>
 
+    </div>
 
-                <div class="form-group">
+    <div class="ejercicio">
 
-                    <label for="tipo_identificacion">
-                        Tipo de identificación:
-                    </label>
+      <h3>doWhileAlMenosUnaVez(limite)</h3>
 
-                    <select id="tipo_identificacion" name="tipo_identificacion" required>
+      <input
+        type="number"
+        id="numero3"
+        placeholder="Ingrese un valor"
+      >
 
-                        <option value="" disabled selected>
-                            Seleccione...
-                        </option>
+      <button type="button" id="resolver3">
+        Resolver
+      </button>
 
-                        <option value="13">
-                            Cédula de ciudadanía
-                        </option>
+      <p id="resultado3"></p>
 
-                        <option value="12">
-                            Tarjeta de identidad
-                        </option>
+    </div>
 
-                        <option value="21">
-                            Cédula de extranjería
-                        </option>
+  </div>
 
-                        <option value="41">
-                            Pasaporte
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="numero_identificacion">
-                        Número de identificación:
-                    </label>
-
-                    <input type="text" id="numero_identificacion" name="numero_identificacion"
-                        placeholder="Su número de identificación" required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="nacimiento">
-                        Fecha de nacimiento:
-                    </label>
-
-                    <input type="date" id="nacimiento" name="nacimiento" required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="celular">
-                        Número de celular:
-                    </label>
-
-                    <input type="tel" id="celular" name="celular" placeholder="Su número de celular" required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="correo">
-                        Correo electrónico:
-                    </label>
-
-                    <input type="email" id="correo" name="correo" placeholder="Su correo electrónico" required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="pais">
-                        País de domicilio:
-                    </label>
-
-                    <select id="pais" name="pais" required>
-
-                        <option value="" disabled selected>
-                            Seleccione...
-                        </option>
-
-                        <option value="169">Colombia</option>
-                        <option value="249">Estados Unidos</option>
-                        <option value="170">Ecuador</option>
-                        <option value="169-VEN">Venezuela</option>
-                        <option value="196">México</option>
-                        <option value="076">Brasil</option>
-                        <option value="724">España</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="ciudad">
-                        Ciudad de domicilio:
-                    </label>
-
-                    <select id="ciudad" name="ciudad" required>
-
-                        <option value="" disabled selected>
-                            Seleccione.
-                        </option>
-
-                        <option value="11001">Bogotá D.C.</option>
-                        <option value="05001">Medellín</option>
-                        <option value="76001">Cali</option>
-                        <option value="08001">Barranquilla</option>
-                        <option value="68001">Bucaramanga</option>
-                        <option value="13001">Cartagena</option>
-                        <option value="17001">Manizales</option>
-                        <option value="66001">Pereira</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <h4>
-                        Tratamiento de datos personales.
-                    </h4>
-
-                    <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" target="_blank"
-                        rel="noopener noreferrer">
-
-                        Términos y condiciones
-
-                    </a>
-
-
-                    <div id="grupo-checkbox">
-
-                        <input type="checkbox" id="tratamiento_datos" name="tratamiento_datos" required>
-
-                        <label for="tratamiento_datos">
-
-                            Acepto el tratamiento de mis datos personales
-                            después de haber leído los términos y condiciones.
-
-                        </label>
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <input type="submit" id="boton-enviar" value="Enviar">
-
-                </div>
-
-            </form>
-
-        </div>
-
-
-        <div id="reto-javascript">
-
-            <h2 id="titulo-reto">
-                Retos JavaScript
-            </h2>
-
-
-            <div class="ejercicio">
-
-                <h3>numerosconwhile(n)</h3>
-
-                <input type="number" id="numero1" placeholder="Ingrese un valor">
-
-                <button type="button" id="resolver1">
-                    Resolver
-                </button>
-
-                <p id="resultado1"></p>
-
-            </div>
-
-
-            <div class="ejercicio">
-
-                <h3>contarHastalimite(limite)</h3>
-
-                <input type="number" id="numero2" placeholder="Ingrese un valor">
-
-                <button type="button" id="resolver2">
-                    Resolver
-                </button>
-
-                <p id="resultado2"></p>
-
-            </div>
-
-
-            <div class="ejercicio">
-
-                <h3>doWhileAlMenosUnaVez(limite)</h3>
-
-                <input type="number" id="numero3" placeholder="Ingrese un valor">
-
-                <button type="button" id="resolver3">
-                    Resolver
-                </button>
-
-                <p id="resultado3"></p>
-
-            </div>
-
-        </div>
-        @if(ultimoUsuario) {
-            <div class="user-infor">
-        }
-
-    </main>
-
-    <script src="registro-usuario.component.ts"></script>
-
-</body>
-
-</html>
+</main>
