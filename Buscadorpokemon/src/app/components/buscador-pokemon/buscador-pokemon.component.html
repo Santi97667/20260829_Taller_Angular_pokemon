@@ -1,1 +1,56 @@
-<p>buscador-pokemon works!</p>
+<section class="search-page">
+  <div class="intro">
+    <span class="eyebrow">Pokedex / Explorador</span>
+    <h2>Encuentra tu proximo <em>Pokemon</em></h2>
+    <p>Consulta datos esenciales de cualquier criatura de la region.</p>
+  </div>
+
+  <form class="search-box" (ngSubmit)="buscarPokemon()">
+    <label for="nombrePokemon">Nombre del Pokemon</label>
+    <div class="search-row">
+      <input
+        id="nombrePokemon"
+        type="text"
+        [(ngModel)]="nombrePokemonInput"
+        name="nombrePokemon"
+        placeholder="Ej. Pikachu"
+        required
+      />
+      <button type="submit" [disabled]="buscando()">
+        {{ buscando() ? 'Buscando...' : 'Buscar' }}
+        <span aria-hidden="true">-&gt;</span>
+      </button>
+    </div>
+  </form>
+
+  <div class="result-area" id="resultadoPokemon">
+
+    @if(pokemon(); as p){
+      <article class="pokemon-card">
+        <div class="card-heading">
+          <span class="status-dot">Resultado encontrado</span>
+          <span class="pokemon-id">#{{ p.name.length * 10 }}</span>
+        </div>
+
+        <div class="pokemon-content">
+          <div class="image-frame">
+            <img [src]="p.image" [alt]="p.name" />
+          </div>
+          <div class="pokemon-info">
+            <span class="type-label">Pokemon descubierto</span>
+            <h3>{{ p.name }}</h3>
+            <div class="type-chip">{{ p.type }}</div>
+          </div>
+        </div>
+      </article>
+    } @else if(mensajeError()) {
+      <div class="message error-message">{{ mensajeError() }}</div>
+    } @else {
+      <div class="message empty-message">
+        <span class="pokeball" aria-hidden="true">+</span>
+        <p>Tu proxima aventura comienza aqui.</p>
+        <small>Escribe un nombre para revelar sus datos.</small>
+      </div>
+    }
+  </div>
+</section>
