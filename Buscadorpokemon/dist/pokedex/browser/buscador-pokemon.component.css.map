@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/buscador-pokemon/buscador-pokemon.component.css"],
+  "sourcesContent": ["\n\n.card-pokemon {\n  margin-top: 1.5rem;\n  padding: 1.5rem;\n  border-radius: 12px;\n  text-align: center;\n  background-color: #fafafa;\n}\n\n.badge-tipo {\n  color: white;\n  padding: 4px 10px;\n  border-radius: 12px;\n  font-size: 0.85rem;\n  font-weight: bold;\n}\n\n.tipo-fire { background-color: #fff3e0; }\n.tipo-water { background-color: #e1f5fe; }\n.tipo-grass { background-color: #e8f8f5; }\n\n.btn-guardar {\n  margin-top: 1rem;\n  background-color: #4caf50;\n  color: white;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n"],
+  "mappings": ";AAEA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,iBAAe;AACf,cAAY;AACZ,oBAAkB;AACpB;AAEA,CAAC;AACC,SAAO;AACP,WAAS,IAAI;AACb,iBAAe;AACf,aAAW;AACX,eAAa;AACf;AAEA,CAAC;AAAY,oBAAkB;AAAS;AACxC,CAAC;AAAa,oBAAkB;AAAS;AACzC,CAAC;AAAa,oBAAkB;AAAS;AAEzC,CAAC;AACC,cAAY;AACZ,oBAAkB;AAClB,SAAO;AACP,UAAQ;AACR,WAAS,IAAI;AACb,iBAAe;AACf,UAAQ;AACV;",
+  "names": []
+}

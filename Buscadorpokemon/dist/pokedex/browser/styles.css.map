@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/styles.css"],
+  "sourcesContent": ["@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');\n\n* {\n\tbox-sizing: border-box;\n}\n\nhtml,\nbody {\n\tmargin: 0;\n\tmin-height: 100%;\n}\n\nbody {\n\tbackground: #111e20;\n\tcolor: #f5f7fb;\n\tfont-family: 'Space Grotesk', sans-serif;\n}\n"],
+  "mappings": ";;;AAEA;AACC,cAAY;AACb;AAEA;AACA;AACC,UAAQ;AACR,cAAY;AACb;AAEA;AACC,cAAY;AACZ,SAAO;AACP,eAAa,eAAe,EAAE;AAC/B;",
+  "names": []
+}

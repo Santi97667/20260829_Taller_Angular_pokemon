@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/inventario-pokemon/inventario-pokemon.css"],
+  "sourcesContent": ["grid-pokemons {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));\n  gap: 15px;\n  margin-top: 1.5rem;\n}\n\n.item-inventario {\n  background: white;\n  padding: 1rem;\n  border-radius: 10px;\n  border: 1px solid #e0e0e0;\n  text-align: center;\n  position: relative;\n}\n\n.posicion-badge {\n  font-size: 0.75rem;\n  color: #757575;\n}\n\n.favorito-activo {\n  background-color: #fffde7;\n  border: 2px solid #fbc02d !important;\n}\n\n.acciones {\n  display: flex;\n  justify-content: space-around;\n  margin-top: 10px;\n}\n\n.btn-fav {\n  background-color: #fbc02d;\n  color: #333;\n  font-weight: bold;\n}\n\n.btn-eliminar {\n  background-color: #e57373;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n.sin-datos {\n  grid-column: 1 / -1;\n  text-align: center;\n  padding: 2rem;\n  color: #666;\n}"],
+  "mappings": ";AAAA;AACE,WAAS;AACT,yBAAuB,OAAO,SAAS,EAAE,OAAO,KAAK,EAAE;AACvD,OAAK;AACL,cAAY;AACd;AAEA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,iBAAe;AACf,UAAQ,IAAI,MAAM;AAClB,cAAY;AACZ,YAAU;AACZ;AAEA,CAAC;AACC,aAAW;AACX,SAAO;AACT;AAEA,CAAC;AACC,oBAAkB;AAClB,UAAQ,IAAI,MAAM;AACpB;AAEA,CAAC;AACC,WAAS;AACT,mBAAiB;AACjB,cAAY;AACd;AAEA,CAAC;AACC,oBAAkB;AAClB,SAAO;AACP,eAAa;AACf;AAEA,CAAC;AACC,oBAAkB;AAClB,SAAO;AACP,UAAQ;AACR,iBAAe;AACf,UAAQ;AACV;AAEA,CAAC;AACC,eAAa,EAAE,EAAE;AACjB,cAAY;AACZ,WAAS;AACT,SAAO;AACT;",
+  "names": []
+}
